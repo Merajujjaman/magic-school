@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC7e6Y0b4TAjK8o_I9ccbOiFt8zdh0bGhw",
-  authDomain: "illusoria-academy-of-magic.firebaseapp.com",
-  projectId: "illusoria-academy-of-magic",
-  storageBucket: "illusoria-academy-of-magic.appspot.com",
-  messagingSenderId: "36256123610",
-  appId: "1:36256123610:web:c6640d2832ef15777633e3"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId
 };
 
 // Initialize Firebase
