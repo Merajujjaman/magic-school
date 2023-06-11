@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link, NavLink, Outlet } from 'react-router-dom';
+import {  NavLink, Outlet } from 'react-router-dom';
 import {FaBook, FaHome, FaUsers} from 'react-icons/fa'
 
 const DashboardLayout = () => {
-    const isAdmin = false;
+    const isAdmin = true;
     const isInstractor = false;
     return (
         <>
