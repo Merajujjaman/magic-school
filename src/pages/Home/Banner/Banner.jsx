@@ -10,7 +10,7 @@ import banner6 from '../../../assets/images/banner6.jpg'
 import BannerCover from './BannerCover';
 const Banner = () => {
     return (
-        <Carousel autoPlay={true} interval={2000} infiniteLoop>
+        <Carousel autoPlay={true} interval={2000} showThumbs={false} infiniteLoop>
             <div>
                 <BannerCover bannerImage={banner1}></BannerCover>
             </div>

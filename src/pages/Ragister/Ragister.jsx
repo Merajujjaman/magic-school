@@ -4,6 +4,7 @@ import Lottie from "lottie-react";
 import { Link } from 'react-router-dom';
 import registerAnimation from '../../assets/animation/118046-lf20-oahmox5rjson.json'
 import { AuthContext } from '../../Providers/AuthProvider';
+import SocialLogin from '../../Routs/components/SocialLogin/SocialLogin';
 // const axios = require('axios');
 
 const image_key = import.meta.env.VITE_IMAGE_HOST_KEY;
@@ -31,10 +32,10 @@ const Ragister = () => {
                         createUser(data.email, data.password)
                             .then(result => {
                                 const user = result.user;
-                                console.log('create theke', user);
+                                
                                 updateUser(data.name, image_url)
                                     .then(() => {
-                                        console.log('upadte done');
+                                        // console.log('upadte done');
                                         const saveUser ={name: data.name, email: data.email, photo: image_url}
                                         fetch('http://localhost:5000/users', {
                                             method: 'POST',
@@ -119,12 +120,12 @@ const Ragister = () => {
                                     {...register("comfirm_password")} placeholder="password" className="input input-bordered" required />
                             </div>
 
-                            <div className="form-control mt-4">
+                            <div className="form-control mt-2">
                                 <input className="btn btn-primary" type="submit" value="Create" />
                             </div>
                         </form>
-                        <p className='text-center my-4'>Already have an account?<Link to='/login' className='text-info'>Login</Link></p>
-                        {/* <SocialLogin></SocialLogin> */}
+                        <p className='text-center'>Already have an account?<Link to='/login' className='text-info'>Login</Link></p>
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
