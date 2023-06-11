@@ -16,11 +16,12 @@ const NavBar = () => {
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/classes'>Classes</Link></li>
         <li><Link to='/instructors'>Instructors</Link></li>
+        <li><Link>Dashboard</Link></li>
 
     </>
 
     return (
-        <div className="navbar fixed z-30  w-full bg-black text-white font-bold opacity-70">
+        <div className="navbar fixed z-30 w-full bg-black text-white font-bold opacity-70">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
