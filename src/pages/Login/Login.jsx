@@ -2,12 +2,15 @@ import React, { useContext } from 'react';
 import SocialLogin from '../../Routs/components/SocialLogin/SocialLogin';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../Providers/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Lottie from "lottie-react";
 import loginAnimation from '../../assets/animation/121421-login.json'
 
 const Login = () => {
     const {signIn} = useContext(AuthContext)
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location?.state?.pathname || '/';
 
     const handleLogin = event => {
         event.preventDefault()
@@ -28,6 +31,7 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1500
                 })
+                from.reset()
                 navigate(from, { replace: true })
 
             })

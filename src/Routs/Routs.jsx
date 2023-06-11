@@ -5,6 +5,7 @@ import Ragister from "../pages/Ragister/Ragister";
 import Classes from "../pages/Classes/Classes";
 import Instructors from "../pages/Instructors/Instructors";
 import Login from "../pages/Login/Login";
+import PrivateRout from "./PrivateRout";
 
 const router = createBrowserRouter([
     {
@@ -17,11 +18,11 @@ const router = createBrowserRouter([
         },
         {
             path:'classes',
-            element: <Classes></Classes>
+            element: <PrivateRout><Classes></Classes></PrivateRout>
         },
         {
             path: 'instructors',
-            element: <Instructors></Instructors>
+            element: <PrivateRout><Instructors></Instructors></PrivateRout>
         }
         
       ]

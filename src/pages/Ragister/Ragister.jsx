@@ -1,17 +1,22 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import Lottie from "lottie-react";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import registerAnimation from '../../assets/animation/118046-lf20-oahmox5rjson.json'
 import { AuthContext } from '../../Providers/AuthProvider';
 import SocialLogin from '../../Routs/components/SocialLogin/SocialLogin';
+import Swal from 'sweetalert2';
 // const axios = require('axios');
 
 const image_key = import.meta.env.VITE_IMAGE_HOST_KEY;
 
 const Ragister = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { createUser, updateUser } = useContext(AuthContext)
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location?.state?.pathname || '/';
+
     const image_host_url = `https://api.imgbb.com/1/upload?key=${image_key}`
 
     const handleRegister = data => {
@@ -32,11 +37,11 @@ const Ragister = () => {
                         createUser(data.email, data.password)
                             .then(result => {
                                 const user = result.user;
-                                
+
                                 updateUser(data.name, image_url)
                                     .then(() => {
                                         // console.log('upadte done');
-                                        const saveUser ={name: data.name, email: data.email, photo: image_url}
+                                        const saveUser = { name: data.name, email: data.email, photo: image_url }
                                         fetch('http://localhost:5000/users', {
                                             method: 'POST',
                                             headers: {
@@ -44,10 +49,20 @@ const Ragister = () => {
                                             },
                                             body: JSON.stringify(saveUser)
                                         })
-                                        .then(res => res.json())
-                                        .then(data => {
-                                            console.log('after post', data);
-                                        })
+                                            .then(res => res.json())
+                                            .then(data => {
+                                                if (data.insertedId) {
+                                                    Swal.fire({
+                                                        position: 'center',
+                                                        icon: 'success',
+                                                        title: 'user created successfully',
+                                                        showConfirmButton: false,
+                                                        timer: 1500
+                                                    })
+                                                    reset()
+                                                    navigate(from, { replace: true })
+                                                }
+                                            })
                                     })
                                     .catch(err => {
                                         console.log(err);

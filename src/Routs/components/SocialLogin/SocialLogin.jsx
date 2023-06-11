@@ -2,9 +2,14 @@ import React, { useContext } from 'react';
 import { FcGoogle } from 'react-icons/fc'
 import { AuthContext } from '../../../Providers/AuthProvider';
 import axios from 'axios';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const SocialLogin = () => {
     const {googleSignIn} = useContext(AuthContext)
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location?.state?.pathname || '/';
+
     const handleGoogleSignIn = () => {
         googleSignIn()
         .then( result => {
@@ -15,6 +20,7 @@ const SocialLogin = () => {
             axios.post('http://localhost:5000/users', saveUser)
             .then(data => {
                 console.log(data.data);
+                navigate(from, { replace: true })
             })
             
         })
