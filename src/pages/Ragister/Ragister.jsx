@@ -124,7 +124,7 @@ const Ragister = () => {
                                 <input className="btn btn-primary" type="submit" value="Create" />
                             </div>
                         </form>
-                        <p className='text-center'>Already have an account?<Link to='/login' className='text-info'>Login</Link></p>
+                        <p className='text-center'>Already have an account?<Link to='login' className='text-info'>Login</Link></p>
                         <SocialLogin></SocialLogin>
                     </div>
                 </div>

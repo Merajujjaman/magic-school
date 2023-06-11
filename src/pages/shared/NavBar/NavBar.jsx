@@ -14,7 +14,7 @@ const NavBar = () => {
     }
     const navRouts = <>
         <li><Link to='/'>Home</Link></li>
-        <li><Link to='/class'>Classes</Link></li>
+        <li><Link to='/classes'>Classes</Link></li>
         <li><Link to='/instructors'>Instructors</Link></li>
 
     </>
