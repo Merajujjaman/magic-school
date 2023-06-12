@@ -31,7 +31,7 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1500
                 })
-                from.reset()
+                
                 navigate(from, { replace: true })
 
             })
