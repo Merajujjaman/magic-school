@@ -2,11 +2,14 @@ import React, { useContext } from 'react';
 import SectionTitle from '../../../../Routs/components/SectionTitle';
 import { AuthContext } from '../../../../Providers/AuthProvider';
 import { useForm } from 'react-hook-form';
+import useAxiosSecure from '../../../../hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 const image_key = import.meta.env.VITE_IMAGE_HOST_KEY;
 const AddClass = () => {
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, } = useForm();
     const { user } = useContext(AuthContext)
+    const [axiosSecure] = useAxiosSecure()
 
     const image_host_url = `https://api.imgbb.com/1/upload?key=${image_key}`
     const handleAddClass = (data) => {
@@ -19,10 +22,23 @@ const AddClass = () => {
             .then(res => res.json())
             .then(imageData => {
                 const image_url = imageData.data.display_url;
-                const {className, instructorName, instructorEmail, availableSeats, price} = data
-                const addClass ={ className, classImage: image_url, instructorName, instructorEmail, availableSeats, price, status: 'painding'}
-                console.log(image_url);
+                const { className, instructorName, instructorEmail, availableSeats, price } = data
+                const addClass = { className, classImage: image_url, instructorName, instructorEmail, availableSeats, price, status: 'pending', enrolled: 0 }
                 console.log(addClass);
+                axiosSecure.post('/instructor/classes', addClass)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'user created successfully',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+
+                        }
+                    })
+
             })
             .catch(error => console.log(error))
 
@@ -62,7 +78,7 @@ const AddClass = () => {
                         <label className="label">
                             <span className="label-text text-primary">Instructor Email</span>
                         </label>
-                        <input type="text" value={user?.email} readOnly {...register("instructorEmail")} className="file-input file-input-bordered w-full px-2" />
+                        <input type="text" value={user?.email} readOnly {...register("instructorEmail")} className="file-input file-input-bordered w-full px-4" />
                     </div>
 
                 </div>
@@ -79,7 +95,7 @@ const AddClass = () => {
                         <label className="label">
                             <span className="label-text text-primary">Price</span>
                         </label>
-                        <input type="number" {...register("price")} required className="file-input file-input-bordered w-full" />
+                        <input type="number" {...register("price")} required className="file-input file-input-bordered w-full px-4" />
                     </div>
 
                 </div>
