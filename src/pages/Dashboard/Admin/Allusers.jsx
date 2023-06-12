@@ -14,9 +14,26 @@ const Allusers = () => {
             return res.data
         }
     })
-
+    
     const handleMakeAdmin = (user) => {
         axiosSecure.patch(`/users/admin/${user._id}`)
+        .then(res => {
+            // console.log(res.data);
+            if(res.data.modifiedCount > 0){
+                refetch()
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: `${user.name} is an admin now`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+            }
+        })
+    }
+
+    const handleMakeInstructor =(user) => {
+        axiosSecure.patch(`/users/instructor/${user._id}`)
         .then(res => {
             console.log(res.data);
             if(res.data.modifiedCount > 0){
@@ -24,7 +41,7 @@ const Allusers = () => {
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: `${user.name} is an admin now`,
+                    title: `${user.name} is an Instructor now`,
                     showConfirmButton: false,
                     timer: 1500
                   })
@@ -78,7 +95,7 @@ const Allusers = () => {
                                     </td>
 
                                     <td className='text-center'>
-                                        <button className="btn btn-info btn-sm border-0 text-white mr-2">Make Instructor</button>
+                                        <button disabled={user?.role === 'instructor'} onClick={() => handleMakeInstructor(user)} className="btn btn-info btn-sm border-0 text-white mr-2">Make Instructor</button>
                                         <button disabled={user?.role === 'admin'} onClick={() => handleMakeAdmin (user)} className="btn btn-error btn-sm border-0 text-white">Make Admin</button>
                                     </td>
 

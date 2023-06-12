@@ -1,10 +1,16 @@
 import React from 'react';
-import {  NavLink, Outlet } from 'react-router-dom';
-import {FaBook, FaHome, FaUsers} from 'react-icons/fa'
+import { NavLink, Outlet } from 'react-router-dom';
+import { FaBook, FaHome, FaUsers } from 'react-icons/fa'
+import useAdmin from '../hooks/useAdmin';
+import useInstructor from '../hooks/useInstructor';
 
 const DashboardLayout = () => {
-    const isAdmin = true;
-    const isInstractor = false;
+    // const isAdmin = true;
+    // const isInstructor = false;
+    const [isAdmin] = useAdmin()
+    const [isInstructor] = useInstructor()
+
+
     return (
         <>
             <div className="drawer lg:drawer-open">
@@ -22,25 +28,25 @@ const DashboardLayout = () => {
                         <li><NavLink to='/'> <FaHome></FaHome> Home</NavLink></li>
                         {
                             isAdmin && <>
-                            <li><NavLink to='/dashboard/manageClasses'> <FaBook></FaBook>  Manage Classes</NavLink></li>
-                            <li><NavLink to='/dashboard/users'> <FaUsers></FaUsers> Manage Users</NavLink></li>
+                                <li><NavLink to='/dashboard/manageClasses'> <FaBook></FaBook>  Manage Classes</NavLink></li>
+                                <li><NavLink to='/dashboard/users'> <FaUsers></FaUsers> Manage Users</NavLink></li>
                             </>
                         }
                         {
-                            isInstractor && <>
-                            <li><NavLink to='/dashboard/manageClasses'> <FaBook></FaBook> Add a Class</NavLink></li>
-                            <li><NavLink to='/dashboard/users'> <FaUsers></FaUsers> My Classes</NavLink></li>
+                            isInstructor && <>
+                                <li><NavLink to='/dashboard/manageClasses'> <FaBook></FaBook> Add a Class</NavLink></li>
+                                <li><NavLink to='/dashboard/users'> <FaUsers></FaUsers> My Classes</NavLink></li>
                             </>
                         }
                         {
-                            !isInstractor && !isAdmin && <>
-                            <li><NavLink to='/dashboard/manageClasses'> <FaBook></FaBook> My Selected Classes</NavLink></li>
-                            <li><NavLink to='/dashboard/users'> <FaUsers></FaUsers> My Enroled Classes</NavLink></li>
+                            !isInstructor && !isAdmin && <>
+                                <li><NavLink to='/dashboard/manageClasses'> <FaBook></FaBook> My Selected Classes</NavLink></li>
+                                <li><NavLink to='/dashboard/users'> <FaUsers></FaUsers> My Enroled Classes</NavLink></li>
                             </>
                         }
 
 
-                        
+
                     </ul>
 
                 </div>
