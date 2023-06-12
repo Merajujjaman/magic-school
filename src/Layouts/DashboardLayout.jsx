@@ -28,14 +28,14 @@ const DashboardLayout = () => {
                         <li><NavLink to='/'> <FaHome></FaHome> Home</NavLink></li>
                         {
                             isAdmin && <>
-                                <li><NavLink to='/dashboard/manageClasses'> <FaBook></FaBook>  Manage Classes</NavLink></li>
                                 <li><NavLink to='/dashboard/users'> <FaUsers></FaUsers> Manage Users</NavLink></li>
+                                <li><NavLink to='/dashboard/manageClasses'> <FaBook></FaBook>  Manage Classes</NavLink></li>
                             </>
                         }
                         {
                             isInstructor && <>
-                                <li><NavLink to='/dashboard/manageClasses'> <FaBook></FaBook> Add a Class</NavLink></li>
-                                <li><NavLink to='/dashboard/users'> <FaUsers></FaUsers> My Classes</NavLink></li>
+                                <li><NavLink to='/dashboard/addClass'> <FaBook></FaBook> Add a Class</NavLink></li>
+                                <li><NavLink to='/dashboard/myClass'> <FaUsers></FaUsers> My Classes</NavLink></li>
                             </>
                         }
                         {

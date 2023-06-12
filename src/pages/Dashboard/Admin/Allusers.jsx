@@ -95,7 +95,7 @@ const Allusers = () => {
                                     </td>
 
                                     <td className='text-center'>
-                                        <button disabled={user?.role === 'instructor'} onClick={() => handleMakeInstructor(user)} className="btn btn-info btn-sm border-0 text-white mr-2">Make Instructor</button>
+                                        <button disabled={user?.role === 'instructor'} onClick={() => handleMakeInstructor(user)} className="btn btn-info btn-sm border-0 text-white mr-2 mb-2">Make Instructor</button>
                                         <button disabled={user?.role === 'admin'} onClick={() => handleMakeAdmin (user)} className="btn btn-error btn-sm border-0 text-white">Make Admin</button>
                                     </td>
 

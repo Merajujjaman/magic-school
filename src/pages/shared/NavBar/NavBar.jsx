@@ -1,9 +1,13 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
+import useAdmin from '../../../hooks/useAdmin';
+import useInstructor from '../../../hooks/useInstructor';
 
 const NavBar = () => {
     const { user, logOut} = useContext(AuthContext)
+    const [isAdmin] = useAdmin()
+    const [isInstructor] = useInstructor()
     const navigate = useNavigate()
     const handleLogOut = () => {
         logOut()
@@ -17,6 +21,7 @@ const NavBar = () => {
         <li><Link to='/classes'>Classes</Link></li>
         <li><Link to='/instructors'>Instructors</Link></li>
         <li><Link to='/dashboard'>Dashboard</Link></li>
+        
 
     </>
 
