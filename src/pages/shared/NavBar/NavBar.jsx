@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
 import useAdmin from '../../../hooks/useAdmin';
 import useInstructor from '../../../hooks/useInstructor';
@@ -17,12 +17,12 @@ const NavBar = () => {
             .catch(error => console.log(error))
     }
     const navRouts = <>
-        <li><Link to='/'>Home</Link></li>
-        <li><Link to='/classes'>Classes</Link></li>
-        <li><Link to='/instructors'>Instructors</Link></li>
+        <li><NavLink to='/'>Home</NavLink></li>
+        <li><NavLink to='/classes'>Classes</NavLink></li>
+        <li><NavLink to='/instructors'>Instructors</NavLink></li>
         
-        { isAdmin && <li><Link to='/dashboard/users'>Dashboard</Link></li> }
-        { isInstructor && <li><Link to='/dashboard/myClass'>Dashboard</Link></li> }
+        { isAdmin && <li><NavLink to='/dashboard/users'>Dashboard</NavLink></li> }
+        { isInstructor && <li><NavLink to='/dashboard/myClass'>Dashboard</NavLink></li> }
 
     </>
 
