@@ -1,12 +1,11 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import { FaBook, FaHome, FaUsers } from 'react-icons/fa'
+import { FaBook, FaHome, FaMarker, FaUniversity, FaUsers } from 'react-icons/fa'
 import useAdmin from '../hooks/useAdmin';
 import useInstructor from '../hooks/useInstructor';
 
 const DashboardLayout = () => {
-    // const isAdmin = true;
-    // const isInstructor = false;
+
     const [isAdmin] = useAdmin()
     const [isInstructor] = useInstructor()
 
@@ -34,8 +33,8 @@ const DashboardLayout = () => {
                         }
                         {
                             isInstructor && <>
-                                <li><NavLink to='/dashboard/myClass'> <FaUsers></FaUsers> My Classes</NavLink></li>
-                                <li><NavLink to='/dashboard/addClass'> <FaBook></FaBook> Add a Class</NavLink></li>
+                                <li><NavLink to='/dashboard/myClass'> <FaUniversity></FaUniversity> My Classes</NavLink></li>
+                                <li><NavLink to='/dashboard/addClass'> <FaMarker></FaMarker> Add a Class</NavLink></li>
                             </>
                         }
                         {

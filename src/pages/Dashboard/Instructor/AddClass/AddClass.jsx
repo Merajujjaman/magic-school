@@ -4,12 +4,14 @@ import { AuthContext } from '../../../../Providers/AuthProvider';
 import { useForm } from 'react-hook-form';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const image_key = import.meta.env.VITE_IMAGE_HOST_KEY;
 const AddClass = () => {
     const { register, handleSubmit, reset, } = useForm();
     const { user } = useContext(AuthContext)
     const [axiosSecure] = useAxiosSecure()
+    const navigate = useNavigate()
 
     const image_host_url = `https://api.imgbb.com/1/upload?key=${image_key}`
     const handleAddClass = (data) => {
@@ -35,6 +37,8 @@ const AddClass = () => {
                                 showConfirmButton: false,
                                 timer: 1500
                             })
+                            reset()
+                            navigate('/dashboard/myClass')
 
                         }
                     })

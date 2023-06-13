@@ -1,14 +1,22 @@
-import React, { useEffect } from 'react';
-
+import React, { useState } from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import { useQuery } from '@tanstack/react-query';
 import useAllclasses from '../../../hooks/useAllclasses';
 import SectionTitle from '../../../Routs/components/SectionTitle';
 import Swal from 'sweetalert2';
+import FeedbackModal from './FeedbackModal';
 
 const ManageClasses = () => {
     const [axiosSecure] = useAxiosSecure()
     const [allClasses, refetch] = useAllclasses()
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
 
     const handleApprove = (item) => {
         axiosSecure.patch(`/class/approve/${item._id}`)
@@ -110,16 +118,17 @@ const ManageClasses = () => {
                                     <td className='text-center' >
                                         <button disabled={item?.status !== 'pending'} onClick={() => handleApprove(item)} className='btn btn-primary btn-xs  mr-2'> Approve </button>
                                         <button disabled={item?.status !== 'pending'} onClick={() => handleDeny(item)} className='btn btn-error btn-xs mr-2'>Deny</button>
-                                        <button className='btn btn-info btn-xs  mr-2'>Feedback</button>
+                                        <button className='btn btn-info btn-xs  mr-2' onClick={openModal} >Feedback</button>
                                     </td>
 
-                                    {/* <UpdateModal refetch={refetch} item={item} isOpen={isModalOpen} onClose={closeModal} ></UpdateModal> */}
+                                    <FeedbackModal item={item} isOpen={isModalOpen} onClose={closeModal} ></FeedbackModal>
                                 </tr>)
                         }
 
                     </tbody>
                 </table>
             </div>
+            
         </div>
     );
 };
