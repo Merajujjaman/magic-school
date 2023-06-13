@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { FaBook, FaHome, FaMarker, FaUniversity, FaUsers } from 'react-icons/fa'
 import useAdmin from '../hooks/useAdmin';
 import useInstructor from '../hooks/useInstructor';
+import { AuthContext } from '../Providers/AuthProvider';
 
 const DashboardLayout = () => {
+    const {user} = useContext(AuthContext)
 
     const [isAdmin] = useAdmin()
     const [isInstructor] = useInstructor()
@@ -23,8 +25,14 @@ const DashboardLayout = () => {
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-60 h-full bg-neutral text-white">
+                        <div>
+                            <img src={user?.photoURL} alt="user photo" className='w-32 rounded-full' />
+                            <h3 className='text-xl font-semibold'>{user?.displayName}</h3>
+                            <h3 className=' italic'>{user?.email}</h3>
+                        </div>
                         {/* Sidebar content here */}
                         <li><NavLink to='/'> <FaHome></FaHome> Home</NavLink></li>
+                        <hr />
                         {
                             isAdmin && <>
                                 <li><NavLink to='/dashboard/users'> <FaUsers></FaUsers> Manage Users</NavLink></li>

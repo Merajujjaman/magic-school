@@ -11,7 +11,7 @@ const UpdateModal = ({ isOpen, onClose, item, refetch }) => {
         const className = form.className.value;
         const availableSeats = form.availableSeats.value;
         const price = form.price.value;
-        const updateClass = {className, availableSeats, price}
+        const updateClass = {className, availableSeats: parseInt(availableSeats), price: parseFloat(price)}
 
         axiosSecure.put(`/instructor/classes/${item?._id}`, updateClass)
         .then(res => {

@@ -1,9 +1,13 @@
 import React from 'react';
+import useAllclasses from '../../hooks/useAllclasses';
+import SectionTitle from '../../Routs/components/SectionTitle';
 
 const Classes = () => {
+    const [allClasses] = useAllclasses()
     return (
         <div>
-            <h1>all classes are here</h1>
+            <SectionTitle title={"Select Your Classes"}></SectionTitle>
+            
         </div>
     );
 };

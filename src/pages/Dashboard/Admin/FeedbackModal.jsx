@@ -21,6 +21,7 @@ const FeedbackModal = ({ isOpen, onClose, item }) => {
                     timer: 1500
                 })
                 refetch()
+                onClose()
             }
         })
         
@@ -31,7 +32,7 @@ const FeedbackModal = ({ isOpen, onClose, item }) => {
     return (
         <>
             {isOpen && (
-                <div className="fixed inset-0 bg-black opacity-70 z-40"></div>
+                <div className="fixed inset-0 bg-black opacity-50 z-40"></div>
             )}
             <div
                 className={`fixed inset-0 flex items-center justify-center z-50 transition-opacity duration-1000 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
