@@ -88,9 +88,9 @@ const Allusers = () => {
                                         {user?.name}
                                     </td>
 
-                                    <td >
-                                        {user.role === 'admin' && 'Admin'}
-                                        {user.role === 'instructor' && 'Instructor'}
+                                    <td className={`${user?.role === 'admin' && 'text-error font-bold' || user?.role === 'instructor' && 'text-info font-bold' }`} >
+                                        {user?.role === 'admin' && 'Admin'}
+                                        {user?.role === 'instructor' && 'Instructor'}
                                         {user?.role !== 'instructor' && user?.role !== 'admin' && 'Student'}
                                     </td>
 

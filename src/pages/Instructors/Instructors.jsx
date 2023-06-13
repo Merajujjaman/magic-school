@@ -15,7 +15,7 @@ const Instructors = () => {
     // console.log(instructors);
 
     return (
-        <div className='mb-20'>
+        <div className='my-20 '>
             <SectionTitle title={"Our Honorable Instructors"}></SectionTitle>
             <div className="overflow-x-auto mx-2">
                 <table className="table w-full md:w-2/4 mx-auto">

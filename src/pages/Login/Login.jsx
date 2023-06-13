@@ -5,9 +5,10 @@ import { AuthContext } from '../../Providers/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Lottie from "lottie-react";
 import loginAnimation from '../../assets/animation/121421-login.json'
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
-    const {signIn} = useContext(AuthContext)
+    const { signIn } = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
     const from = location?.state?.pathname || '/';
@@ -31,9 +32,12 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1500
                 })
-                
+
                 navigate(from, { replace: true })
 
+            })
+            .catch(error => {
+                toast.error(error.message)
             })
 
     }
@@ -66,7 +70,7 @@ const Login = () => {
                                 </label>
                             </div>
 
-                        
+
                             <div className="form-control mt-2">
                                 <input className="btn btn-primary" type="submit" value="Login" />
                             </div>

@@ -23,11 +23,12 @@ const NavBar = () => {
         
         { isAdmin && <li><NavLink to='/dashboard/users'>Dashboard</NavLink></li> }
         { isInstructor && <li><NavLink to='/dashboard/myClass'>Dashboard</NavLink></li> }
+        { !isInstructor && !isAdmin && <li><NavLink to='/dashboard/selectedClasses'>Dashboard</NavLink></li> }
 
     </>
 
     return (
-        <div className="navbar fixed z-30 w-full bg-black text-white font-bold opacity-70">
+        <div className="navbar fixed top-0 z-30 w-full bg-black text-white font-bold opacity-70 px-5">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">

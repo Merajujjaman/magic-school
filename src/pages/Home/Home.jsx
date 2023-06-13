@@ -5,11 +5,13 @@ import PopularInstructors from './Popular/PopularInstructors';
 
 const Home = () => {
     return (
-        <div>
+        <>
             <Banner></Banner>
-            <PopularClasses></PopularClasses>
-            <PopularInstructors></PopularInstructors>
-        </div>
+            <div className='mx-2 md:mx-10'>
+                <PopularClasses></PopularClasses>
+                <PopularInstructors></PopularInstructors>
+            </div>
+        </>
     );
 };
 

@@ -19,7 +19,7 @@ const Classes = () => {
     // console.log(classes);
 
     return (
-        <div>
+        <div className='my-20 mx-5 md:mx-10'>
             <SectionTitle title={"Select Your Classes"}></SectionTitle>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
                 {
