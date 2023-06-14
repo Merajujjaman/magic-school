@@ -1,4 +1,5 @@
 import React from 'react';
+import navlogo from '../../../assets/images/magiclogo.jpg'
 
 const Footer = () => {
 
@@ -7,7 +8,7 @@ const Footer = () => {
 
             <div className="footer p-10 bg-neutral text-neutral-content">
                 <div>
-                    
+                    <img src={navlogo} alt="logo" className='w-24' />
                     <p>Illusoria Academy of Magic<br />Providing reliable tech since 1992</p>
                 </div>
                 <div>

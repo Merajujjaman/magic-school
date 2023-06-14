@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
 import useAdmin from '../../../hooks/useAdmin';
 import useInstructor from '../../../hooks/useInstructor';
+import logo from '../../../assets/images/magiclogo.jpg'
 
 const NavBar = () => {
     const { user, logOut} = useContext(AuthContext)
@@ -38,7 +39,8 @@ const NavBar = () => {
                         {navRouts}
                     </ul>
                 </div>
-                <p className="btn btn-ghost normal-case text-xl">Magic Academy</p>
+                <img src={logo} alt="logo" className='w-12 hidden md:block' />
+                <p className="btn btn-ghost normal-case text-xl">Academy</p>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
