@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import { FaBook, FaHome, FaMarker, FaUniversity, FaUsers } from 'react-icons/fa'
+import { FaBook, FaHome, FaMarker, FaMoneyCheckAlt, FaUniversity, FaUsers } from 'react-icons/fa'
 import useAdmin from '../hooks/useAdmin';
 import useInstructor from '../hooks/useInstructor';
 import { AuthContext } from '../Providers/AuthProvider';
@@ -48,7 +48,7 @@ const DashboardLayout = () => {
                         {
                             !isInstructor && !isAdmin && <>
                                 <li><NavLink to='/dashboard/selectedClasses'> <FaBook></FaBook> My Selected Classes</NavLink></li>
-                                <li><NavLink to='/dashboard/enrolledClassess'> <FaUsers></FaUsers> My Enroled Classes</NavLink></li>
+                                <li><NavLink to='/dashboard/enrolledClassess'> <FaMoneyCheckAlt></FaMoneyCheckAlt> My Enroled Classes</NavLink></li>
                             </>
                         }
 
