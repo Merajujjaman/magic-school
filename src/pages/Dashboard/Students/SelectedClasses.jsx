@@ -44,7 +44,7 @@ const SelectedClasses = () => {
                 <div className='flex gap-2'>
                     <h1 className='text-xl font-semibold text-primary'>Amount: ${total}</h1>
                     <Link to='/dashboard/payments'>
-                        <button className='btn btn-success btn-sm'>pay now</button>
+                        <button disabled={total == 0} className='btn btn-success btn-sm'>pay now</button>
                     </Link>
                 </div>
             </div>

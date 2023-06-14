@@ -13,10 +13,7 @@ const PopularClassesCard = ({item}) => {
                     <h3 className='text-lg font-semibold'>Instructor: {item.instructorName}</h3>
                     <h3 className='text-lg font-semibold'>Total Students: {item.totalStudents}</h3>
                     <p>{item.details}</p>
-                    <div className="card-actions justify-end">
-                        <div className="badge badge-outline">Fashion</div>
-                        <div className="badge badge-outline">Products</div>
-                    </div>
+                    
                 </div>
             </div>
         </>

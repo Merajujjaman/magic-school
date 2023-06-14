@@ -3,12 +3,18 @@ import { FaArrowRight } from 'react-icons/fa';
 import { AuthContext } from '../../Providers/AuthProvider';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import useAdmin from '../../hooks/useAdmin';
+import useInstructor from '../../hooks/useInstructor';
 
 const ClassCard = ({item, refetch}) => {
     const [axiosSecure] = useAxiosSecure()
+    const [isAdmin] = useAdmin()
+    const [isInstructor] = useInstructor()
     const {user} = useContext(AuthContext)
     const [disabled, setDisabled] = useState(false)
     const {_id, classImage, className, instructorName, instructorEmail, price, availableSeats} = item;
+
+
     const handleAddtoCart = () => {
         const saveClass ={classId: _id, studentEmail: user?.email, classImage, className, instructorName, instructorEmail, price: parseFloat(price), availableSeats: parseInt(availableSeats)}
         axiosSecure.post('/student/selectClass', saveClass)
@@ -42,7 +48,7 @@ const ClassCard = ({item, refetch}) => {
                     <p>Available Seats: {item?.availableSeats}</p> 
                     <p>Price: ${item?.price}</p> 
                     <div className="card-actions justify-end">
-                        <button disabled={disabled || item?.availableSeats == 0} className='btn btn-primary btn-sm' onClick={handleAddtoCart} >Add to Dashboard <FaArrowRight></FaArrowRight></button>
+                        <button disabled={disabled || item?.availableSeats == 0 || isAdmin || isInstructor} className='btn btn-primary btn-sm' onClick={handleAddtoCart} >Add to Dashboard <FaArrowRight></FaArrowRight></button>
                     </div>
                 </div>
             </div>

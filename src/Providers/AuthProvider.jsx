@@ -51,10 +51,13 @@ const AuthProvider = ({ children }) => {
             // setLoading(false)
             console.log('current user', currentUser);
             setLoading(false)
+            
             if (currentUser) {
                 axios.post('https://illusoria-academy-of-magic-server.vercel.app/jwt', { email: currentUser.email })
                     .then(data => {
+
                         localStorage.setItem('access-token', data.data.token)
+                        
                     })
                     .catch(error => {
                         console.log(error.message);

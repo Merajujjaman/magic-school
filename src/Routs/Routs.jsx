@@ -14,11 +14,13 @@ import MyClass from "../pages/Dashboard/Instructor/MyClass/MyClass";
 import SelectedClasses from "../pages/Dashboard/Students/SelectedClasses";
 import EnrolledClasses from "../pages/Dashboard/Students/EnrolledClasses";
 import Payment from "../pages/Dashboard/Students/Payments/Payment";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <MainLayout></MainLayout>,
+      errorElement:<ErrorPage></ErrorPage>,
       children: [
         {
             path: "/",

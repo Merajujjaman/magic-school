@@ -6,6 +6,7 @@ import { AuthContext } from '../../../../Providers/AuthProvider';
 import useSelectedClasses from '../../../../hooks/useSelectedClasses';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import './checkoutForm.css';
 
 const CheckoutForm = ({ price }) => {
     const [selectClasses] = useSelectedClasses()
