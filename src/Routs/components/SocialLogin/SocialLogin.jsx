@@ -17,7 +17,7 @@ const SocialLogin = () => {
             console.log(logedUser);
             const saveUser = { name: logedUser.displayName, email: logedUser.email, photo: logedUser.photoURL }
             console.log(saveUser);
-            axios.post('http://localhost:5000/users', saveUser)
+            axios.post('https://illusoria-academy-of-magic-server.vercel.app/users', saveUser)
             .then(data => {
                 console.log(data.data);
                 navigate(from, { replace: true })

@@ -4,7 +4,7 @@ import { useContext, useEffect } from 'react';
 import axios from 'axios';
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://illusoria-academy-of-magic-server.vercel.app',
 });
 const useAxiosSecure = () => {
     const { logOut } = useContext(AuthContext)
@@ -25,7 +25,7 @@ const useAxiosSecure = () => {
             async (error) => {
                 if (error.response && (error.response.status === 401 || error.response.status === 403)) {
                     
-                    await logOut();
+                    // await logOut();
                     navigate('/')
                 }
                 return Promise.reject(error);

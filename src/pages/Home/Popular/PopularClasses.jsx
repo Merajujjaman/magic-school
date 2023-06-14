@@ -7,7 +7,7 @@ const PopularClasses = () => {
     const [classes, setClasses] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:5000/popular/classes')
+        axios.get('https://illusoria-academy-of-magic-server.vercel.app/popular/classes')
             .then(res => {
                 setClasses(res.data)
             })

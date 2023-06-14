@@ -42,7 +42,7 @@ const Ragister = () => {
                                     .then(() => {
                                         // console.log('upadte done');
                                         const saveUser = { name: data.name, email: data.email, photo: image_url }
-                                        fetch('http://localhost:5000/users', {
+                                        fetch('https://illusoria-academy-of-magic-server.vercel.app/users', {
                                             method: 'POST',
                                             headers: {
                                                 'content-type': 'application/json'

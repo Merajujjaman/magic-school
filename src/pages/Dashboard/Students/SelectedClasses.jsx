@@ -2,11 +2,40 @@ import React from 'react';
 import useSelectedClasses from '../../../hooks/useSelectedClasses';
 import SectionTitle from '../../../Routs/components/SectionTitle';
 import { Link } from 'react-router-dom';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 const SelectedClasses = () => {
-    const [selectClasses] = useSelectedClasses()
+    const [selectClasses, refetch] = useSelectedClasses()
+    const [axiosSecure] = useAxiosSecure()
     const total = selectClasses.reduce((sum, item) => item.price + sum, 0)
     // console.log(selectClasses);
+    const handleDelete = (item) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/student/classes/${item._id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                        }
+                        refetch()
+                    })
+
+            }
+        })
+    }
     return (
         <div className='w-full p-4'>
             <SectionTitle title={"Complete Your Payment"}></SectionTitle>
@@ -64,7 +93,7 @@ const SelectedClasses = () => {
                                     </td>
 
                                     <td className='text-center' >
-                                        <button>Delete</button>
+                                        <button onClick={() => handleDelete(item)} className='btn btn-sm btn-error'>Delete</button>
                                     </td>
 
                                 </tr>)

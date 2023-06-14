@@ -6,7 +6,7 @@ const PopularInstructors = () => {
     const [instructors, setInstructors] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:5000/popular/instructors')
+        axios.get('https://illusoria-academy-of-magic-server.vercel.app/popular/instructors')
         .then(res => {
             setInstructors(res.data)
         })
